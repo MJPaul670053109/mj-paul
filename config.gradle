@@ -1,0 +1,8 @@
+project.task("configTask") {
+    group "remotetasks"
+
+    dependsOn project.tasks.findByName("remote")
+    doLast {
+        println "hello！this is config"
+    }
+}

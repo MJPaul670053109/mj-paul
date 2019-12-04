@@ -1,0 +1,27 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+dependencies {
+    implementation 'com.android.tools.build:gradle:3.4.1'
+    implementation fileTree(dir: 'libs',includes: ['*.jar'])
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation 'com.android.tools.build:transform-api:1.5.0'
+    implementation 'org.javassist:javassist:3.25.0-GA'
+    implementation 'commons-io:commons-io:2.4'
+}
+sourceCompatibility = "7"
+targetCompatibility = "7"
+
+
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('E:/repo'))
+            pom.groupId = 'com.mj.plugin'  //groupId ，自行定义，一般是包名
+            pom.artifactId = 'remote' //artifactId ，自行定义
+            pom.version = '2.0.0' //version 版本号
+        }
+    }
+}
